@@ -5,10 +5,11 @@
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
-<a href="{% url 'newsStory' %}">Write New Story</a>
+
 
 {% block content %}
     <h2>Latest News</h2>
+    <h3><a href="{% url 'news:newStory' %}">Write New Story</a></h3>
 
     <div id="latest-stories">
         {% if latest_stories %}
