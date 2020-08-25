@@ -21,4 +21,7 @@ urlpatterns = [
     #add news url
     path('news/', include('news.urls')),
     path('admin/', admin.site.urls),
+    path('users/', include('django.contrib.auth.urls'))
 ]
+#http://localhost:8000/users/login/
+#http://localhost:8000/users/logout
