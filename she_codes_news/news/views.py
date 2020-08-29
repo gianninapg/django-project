@@ -34,3 +34,7 @@ class AddStoryView(generic.CreateView):
         return super().form_valid(form)
 
 
+class UpdateStoryView(generic.UpdateView):
+    model = NewsStory
+    fields = ['title','author', 'content']
+    template_name_suffix = '_update_form'
