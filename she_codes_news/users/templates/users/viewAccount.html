@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h2>View Account</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">View Account</button>
-</form>
+<div class="form-Profile">
+    <h2>Your Account Info:</h2>
+    <p>First name is: {{user.first_name}}</p>
+    <p>Last name is: {{user.last_name}}</p>
+    <p>Username is: {{ user.username}}</p>
+    <p>Email address is: {{user.email}}</p>
+</div>
 {% endblock %}

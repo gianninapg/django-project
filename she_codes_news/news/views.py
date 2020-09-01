@@ -38,3 +38,11 @@ class UpdateStoryView(generic.UpdateView):
     model = NewsStory
     fields = ['title','author', 'content']
     template_name_suffix = '_update_form'
+
+class DeleteStoryView(generic.DeleteView):
+    template_name = 'news/delete.html'
+    model = NewsStory
+    success_url = reverse_lazy('news:index')
+    # Notice get_success_url is defined here and not in the model, because the model will be deleted
+    # def get_success_url(self):
+    #     return reverse_lazy('demos-models-dbcrud-list')
