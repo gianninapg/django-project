@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
+from django.http import HttpResponseRedirect
 
 
 
@@ -33,12 +34,6 @@ class AddStoryView(generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-
-class UpdateStoryView(generic.UpdateView):
-    model = NewsStory
-    fields = ['title','author', 'content']
-    template_name_suffix = '_update_form'
-
 class DeleteStoryView(generic.DeleteView):
     template_name = 'news/delete.html'
     model = NewsStory
@@ -46,3 +41,16 @@ class DeleteStoryView(generic.DeleteView):
     # Notice get_success_url is defined here and not in the model, because the model will be deleted
     # def get_success_url(self):
     #     return reverse_lazy('demos-models-dbcrud-list')
+
+class UpdateStoryView(generic.UpdateView):
+    model = NewsStory
+    template_name = 'news/updateStory.html'
+    fields = ['title','author', 'content']
+ 
+    def get_object(self, queryset=None):
+        id = self.kwargs['pk']
+        return self.model.objects.get(id=id)
+ 
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(reverse_lazy('news:index'))

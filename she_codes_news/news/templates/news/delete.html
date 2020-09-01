@@ -3,6 +3,7 @@
     <a href="{% url 'news:index' %}">Go Back To list</a>
     <form method="post">
     {% csrf_token %}
-        <button class="btn btn-danger">Are you sure you want to delete {{ object }}?</button>
+        <p>Are you sure you want to delete {{ object }}?</p>
+        <button class="btn btn-danger">Delete</button>
     </form>
 {% endblock %}

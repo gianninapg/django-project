@@ -1,0 +1,7 @@
+{% block content %}
+<a href="{% url 'news:index' %}">Go Back To list</a>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-info">Update</button>
+</form>
+{% endblock %}
