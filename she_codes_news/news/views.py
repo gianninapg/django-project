@@ -45,7 +45,7 @@ class DeleteStoryView(generic.DeleteView):
 class UpdateStoryView(generic.UpdateView):
     model = NewsStory
     template_name = 'news/updateStory.html'
-    fields = ['title','author', 'content']
+    fields = ['title','author', 'content', 'pub_date', 'image_url']
  
     def get_object(self, queryset=None):
         id = self.kwargs['pk']
